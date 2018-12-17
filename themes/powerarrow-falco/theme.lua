@@ -18,7 +18,7 @@ theme.dir                                       = os.getenv("HOME") .. "/.config
 theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Sans 10"
 theme.fg_normal                                 = "#DDDDFF"
-theme.fg_focus                                  = "#EA6F81"
+theme.fg_focus                                  = "#fe8019"
 theme.fg_urgent                                 = "#CC9393"
 theme.bg_normal                                 = "#303030"
 theme.bg_focus                                  = "#313131"
@@ -254,8 +254,8 @@ local net = lain.widget.net({
 
 -- Separators
 local spr     = wibox.widget.textbox(' ')
-local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
-local arrl_ld = separators.arrow_left("alpha", theme.bg_focus)
+local arrl_dl = separators.arrow_left('#fe8019', "alpha")
+local arrl_ld = separators.arrow_left("alpha", "#fe8019")
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -296,49 +296,50 @@ function theme.at_screen_connect(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-        s.mytasklist, -- Middle widget
-        s.mytasklist, -- Middle widget
             --spr,
             s.mytaglist,
             s.mypromptbox,
             spr,
+        },
+        { -- Middle widgets
+            layout = wibox.layout.fixed.horizontal,
         },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             spr,
             arrl_ld,
-            wibox.container.background(mpdicon, theme.bg_focus),
-            wibox.container.background(theme.mpd.widget, theme.bg_focus),
+            wibox.container.background(mpdicon, "#fe8019"),
+            wibox.container.background(theme.mpd.widget, "#fe8019"),
             arrl_dl,
             volicon,
             theme.volume.widget,
             arrl_ld,
-            wibox.container.background(mailicon, theme.bg_focus),
+            wibox.container.background(mailicon, "#fe8019"),
             --wibox.container.background(theme.mail.widget, theme.bg_focus),
             arrl_dl,
             memicon,
             mem.widget,
             arrl_ld,
-            wibox.container.background(cpuicon, theme.bg_focus),
-            wibox.container.background(cpu.widget, theme.bg_focus),
+            wibox.container.background(cpuicon, "#fe8019"),
+            wibox.container.background(cpu.widget, "#fe8019"),
             arrl_dl,
             tempicon,
             temp.widget,
             arrl_ld,
-            wibox.container.background(fsicon, theme.bg_focus),
+            wibox.container.background(fsicon, "#fe8019"),
             --wibox.container.background(theme.fs.widget, theme.bg_focus),
             arrl_dl,
             baticon,
             bat.widget,
             arrl_ld,
-            wibox.container.background(neticon, theme.bg_focus),
-            wibox.container.background(net.widget, theme.bg_focus),
+            wibox.container.background(neticon, "#fe8019"),
+            wibox.container.background(net.widget, "#fe8019"),
             arrl_dl,
             clock,
             spr,
             arrl_ld,
-            wibox.container.background(s.mylayoutbox, theme.bg_focus),
+            wibox.container.background(s.mylayoutbox, "#fe8019"),
         },
     }
 
