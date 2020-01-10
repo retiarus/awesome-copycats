@@ -89,7 +89,7 @@ local themes = {
 local chosen_theme = themes[11]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "sakura" or "mate-termfair"
+local terminal     = "kitty" or "sakura" or "mate-termfair"
 local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = "gvim"
 local browser      = "firefox"
@@ -555,6 +555,21 @@ clientkeys = my_table.join(
         end ,
         {description = "maximize", group = "client"})
 )
+
+personalkeys = awful.util.table.join(
+  awful.key({ modkey, altkey            }, "y", function () awful.spawn("sudo /bin/systemctl hybrid-sleep") end,
+  {description = "suspend-hybrid key", group = "personal"}),
+  awful.key({ modkey, altkey            }, "h", function () awful.spawn("sudo /bin/systemctl hibernate") end,
+  {description = "suspend-hybrid key", group = "personal"}),
+  awful.key({ modkey, altkey            }, "r", function () awful.spawn("sudo /bin/systemctl reboot") end,
+  {description = "suspend-hybrid key", group = "personal"}),
+  awful.key({ modkey, altkey            }, "p", function () awful.spawn("sudo /bin/systemctl poweroff") end,
+  {description = "suspend-hybrid key", group = "personal"}),
+  awful.key({ modkey, altkey            }, "s", function () awful.spawn("sudo /bin/systemctl suspend") end,
+  {description = "suspend-hybrid key", group = "personal"})
+  )
+
+globalkeys = awful.util.table.join(globalkeys, personalkeys)
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
